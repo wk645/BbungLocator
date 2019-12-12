@@ -11,9 +11,7 @@ export default class CustomHeader extends React.Component {
         <Left>
           {
             isHome ?
-            <Button transparent>
-              <Icon name='menu' />
-            </Button> :
+            null :
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name='arrow-back' />
             </Button>

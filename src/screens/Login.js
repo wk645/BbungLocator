@@ -12,11 +12,12 @@ export default class Login extends React.Component {
     handleLogin = () => {
         const { email, password } = this.state;
 
-        firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => this.setState({ error: err.message }));
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((user) => this.props.navigation.navigate('Map'))
+            .catch((err) => this.setState({ error: err.message }));
     };
 
     render() {
-        console.log('state in login', this.state);
         return (
             <TouchableWithoutFeedback onPress={() => {
                 Keyboard.dismiss();

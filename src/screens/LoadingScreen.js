@@ -7,14 +7,14 @@ import * as firebase from 'firebase';
 export default class Loading extends React.Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
-            this.props.navigation.navigate('Login');
-            // this.props.navigation.navigate(user ? 'Map' : 'Login');
+            this.props.navigation.navigate(user ? 'Map' : 'Login');
         });
     }
 
     render() {
         return (
             <View style={styles.container}>
+                <Text>Welcome to 뿡어빵!</Text>
                 <Text style={styles.loadText}>Loading...</Text>
                 <ActivityIndicator size='large'></ActivityIndicator>
             </View>

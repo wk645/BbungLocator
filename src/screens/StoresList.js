@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { db } from '../config';
 
 import CustomHeader from '../components/CustomHeader';
-import StoreCard from './Store';
+import StoreCard from './StoreCard';
 
 let storesRef = db.ref('/stores');
 

@@ -11,6 +11,7 @@ export default class SignUp extends React.Component {
     };
 
     handleSignUp = () => {
+        // redirect to Map after creating a new user
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((newUser) => {
             console.log('new user created', newUser.user);
             return newUser.user.updateProfile({

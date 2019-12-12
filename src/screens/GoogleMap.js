@@ -3,22 +3,30 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Button, StyleSheet, View } from 'react-native';
 import { createAppContainer, withNavigation } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import Geolocation from '@react-native-community/geolocation';
+import * as firebase from 'firebase';
+
 import { db } from '../config';
 
 import CustomHeader from '../components/CustomHeader';
-// import App from '../../App';
-// import AddStore from './AddStore';
-// import StoresList from './StoresList';
 import StoresList from './StoresList';
 
 let storesRef = db.ref('/stores');
 
 class GoogleMap extends React.Component {
     state = {
-        stores: []
+        stores: [],
+        initialRegion: null
     };
 
     componentDidMount() {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('uuu', user);
+            }
+        });
+
+        this.getCurrentLocation();
         storesRef.on('value', snapshot => {
             let data = snapshot.val();
             let stores = Object.values(data);
@@ -26,32 +34,45 @@ class GoogleMap extends React.Component {
         });
     }
 
+    getCurrentLocation() {
+        const position = Geolocation.getCurrentPosition(position => {
+            if (position) {
+                this.setState({
+                    initialRegion: {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        latitudeDelta: 0.003,
+                        longitudeDelta: 0.003
+                    }
+                });
+            } else {
+                return null;
+            }
+        });
+    }
+
     render() {
-        // console.log('list of stores', this.state.stores);
+        console.log('state in map', this.state.navigation);
         return (
             <View style={styles.container}>
             <CustomHeader isHome={true} navigation={this.props.navigation} />
             <MapView
                 style={styles.map}
                 provider={PROVIDER_GOOGLE}
-                region={{
-                    latitude: 37.5665,
-                    longitude: 126.9780,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                }}
+                initialRegion={this.state.initialRegion}
+                ref={ref => (this.mapView = ref)}
+                zoomEnabled={true}
                 showsUserLocation={true}
                 followsUserLocation={true}
                 showsMyLocationButton={true}
                 minZoomLevel={5}
+                maxZoomLevel={12}
             >
             {this.state.stores.map(store => (
                 <Marker
                     key={store.address}
                     coordinate={{ latitude: store.latitude, longitude:store.longitude }}
                     title={store.name}
-                    // image={}
-                    // icon={}
                 />)
             )}
             </MapView>
@@ -60,13 +81,6 @@ class GoogleMap extends React.Component {
                     style={styles.button}
                     title='+'
                     onPress={() => this.props.navigation.navigate('AddStore')}
-                />
-            </View>
-            <View style={styles.listButtonContainer}>
-                <Button
-                    style={styles.button}
-                    title='List'
-                    onPress={() => this.props.navigation.navigate('StoresList')}
                 />
             </View>
             </View>

@@ -1,73 +1,48 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-class StoreCard extends React.Component {
-    render() {
-        return (
-            <View style={styles.storesList}>
-                <Text style={styles.header}>가게 리스트</Text>
-                {this.props.stores.map((store, index) => {
-                    return (
-                        <View key={index} style={styles.storeCard}>
-                            <Text style={styles.storeText}>이름: {store.name}</Text>
-                            <Text style={styles.storeText}>가격: {store.price}</Text>
-                            <Text style={styles.storeText}>주소: {store.address}</Text>
-                            <View style={styles.buttonContainer}>
-                                <Button
-                                    style={styles.goButton}
-                                    title='상세'
-                                    onPress={() => this.props.navigation.navigate('Store', {
-                                        store: store
-                                    })}
-                                />
-                            </View>
-                        </View>
-                    );
-                })}
+const Store = (props)  => {
+	const { name, price, address } = props.navigation.state.params.store;
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>이름: {name}</Text>
+            <Text style={styles.text}>가격: {price}</Text>
+            <Text style={styles.text}>주소: {address}</Text>
+            <View style={styles.buttonContainer}>
+                <Button
+                    style={styles.button}
+                    title='안내하기'
+                    color='black'
+                    onPress={() => console.log('안내하기 Clicked!')}
+                />
             </View>
-        )
-    }
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-    storesList: {
+    container: {
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        marginTop: 40,
-        marginRight: 10,
-        marginLeft: 10
+        padding: 20
+
     },
-    storeText: {
-        fontSize: 20,
-        marginLeft: 10,
-        textAlign: 'auto'
-    },
-    header: {
-        textAlign: 'center',
-        fontSize: 35,
-        marginBottom: 25
-    },
-    storeCard: {
-        marginBottom: 20,
-        borderWidth: 1,
-        height: 150,
-        justifyContent: 'space-around'
+    text: {
+        marginTop: 20,
+        marginBottom: 50,
+        fontSize: 20
     },
     buttonContainer: {
         position: 'absolute',
-        top: '30%',
-        right: '1%',
-        width: 55,
+        bottom: '20%',
+        alignSelf: 'center',
+        width: '100%',
+        backgroundColor: '#fcbd3f',
         height: 50,
-        justifyContent: 'center',
-        color: 'black'
+        padding: 10
     },
-    goButton: {
-        width: 100,
-        height: 100,
-        backgroundColor: 'white'
+    button: {
+        alignSelf: 'center' 
     }
 });
 
-export default StoreCard;
+export default Store;

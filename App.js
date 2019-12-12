@@ -7,45 +7,22 @@ import {
   StatusBar,
 } from 'react-native';
 import { Button, Text, Header, Left, Body, Right, Icon, Title } from 'native-base';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import CustomHeader from './src/components/CustomHeader';
 import StoresList from './src/screens/StoresList';
 import GoogleMap from './src/screens/GoogleMap';
+import AddStore from './src/screens/AddStore';
+import Guide from './src/screens/Guide';
+import Profile from './src/screens/Profile';
+import Settings from './src/screens/Settings';
 
-// class MapScreen extends React.Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <CustomHeader isHome={true} navigation={this.props.navigation} />
-//         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//           <Text>Map!</Text>
-//             <Button light onPress={() => this.props.navigation.navigate('GoogleMap')}>
-//           <Text>Go to Map!</Text>
-//           </Button>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-
-// class ListScreen extends React.Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <CustomHeader isHome={false} navigation={this.props.navigation} />
-//         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//           <Text>List!</Text>
-//             <Button light onPress={() => this.props.navigation.navigate('StoresList')}>
-//           <Text>Go to List!</Text>
-//           </Button>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
+import LoadingScreen from './src/screens/LoadingScreen';
+import Login from './src/screens/Login';
+import SignUp from './src/screens/SignUp';
+import Store from './src/screens/Store';
 
 const navOptionHandler = (navigation) => ({
   header: null
@@ -65,13 +42,100 @@ const ListStack = createStackNavigator({
   }
 });
 
-const TabNavigator = createBottomTabNavigator({
-  // 지도, 리스트, 가이드, 프로필, 설정
-  Map: MapStack,
-  List: ListStack,
-  // Guide: ,
-  // Profile: ,
-  // Settings: 
+const MainTabs = createBottomTabNavigator({
+  Map: {
+    screen: MapStack,
+    navigationOptions: {
+        tabBarLabel: '지도',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon size={25} type='Feather' name='map' />
+        )
+    }
+  },
+  List: {
+    screen: ListStack,
+    navigationOptions: {
+      tabBarLabel: '리스트',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon size={25} type='Feather' name='list' />
+      )
+    }
+  },
+  Guide: {
+    screen: Guide,
+    navigationOptions: {
+      tabBarLabel: '가이드',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon size={25} type='Feather' name='info' />
+      )
+    }
+  },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: '프로필',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon size={25} type='Feather' name='user' />
+      )
+    }
+  },
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarLabel: '설정',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon size={25} type='Feather' name='settings' />
+      )
+    }
+  },
 });
 
-export default createAppContainer(TabNavigator);
+const AuthStack = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: navOptionHandler
+  },
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: navOptionHandler
+  }
+});
+
+const MainStack = createStackNavigator({
+  Home: {
+    screen: MainTabs,
+    navigationOptions: navOptionHandler
+  },
+  AddStore: {
+    screen: AddStore,
+    navigationOptions: navOptionHandler
+  }
+},
+{
+  initialRouteName: 'Home'
+});
+
+const app = createSwitchNavigator(
+  {
+    loading: {
+      screen: LoadingScreen,
+      navigationOptions: navOptionHandler
+    },
+    app: MainStack,
+    auth: AuthStack
+  },
+  {
+    initialRouteName: 'loading'
+  }
+);
+
+export default class App extends React.Component {
+  render() {
+    const AppNavigator = createAppContainer(app);
+    return (
+      <AppNavigator />
+    )
+  }
+}
+
+// export default createAppContainer(TabNavigator);
