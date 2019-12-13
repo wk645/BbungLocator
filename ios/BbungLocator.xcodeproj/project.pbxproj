@@ -17,6 +17,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* BbungLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BbungLocatorTests.m */; };
 		43744B77E8F2BEE313DE15AA /* libPods-BbungLocatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EB25FE992BBAA3B1706AD4 /* libPods-BbungLocatorTests.a */; };
+		7793327D23A331E000469823 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7793327C23A331E000469823 /* MapKit.framework */; };
 		B8A6CBA81AC446459BE9EE89 /* libPods-BbungLocator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 671CD478B9E242095D36EC0C /* libPods-BbungLocator.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,9 @@
 		50F8B1D2C1F67B6277F2C515 /* Pods-BbungLocatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BbungLocatorTests.release.xcconfig"; path = "Target Support Files/Pods-BbungLocatorTests/Pods-BbungLocatorTests.release.xcconfig"; sourceTree = "<group>"; };
 		53EB25FE992BBAA3B1706AD4 /* libPods-BbungLocatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BbungLocatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		671CD478B9E242095D36EC0C /* libPods-BbungLocator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BbungLocator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		776D892D23A336AF002CF131 /* BbungLocatorDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = BbungLocatorDebug.entitlements; path = BbungLocator/BbungLocatorDebug.entitlements; sourceTree = "<group>"; };
+		7793327B23A331D100469823 /* BbungLocator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = BbungLocator.entitlements; path = BbungLocator/BbungLocator.entitlements; sourceTree = "<group>"; };
+		7793327C23A331E000469823 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D928C920EB361D875BED510F /* Pods-BbungLocator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BbungLocator.debug.xcconfig"; path = "Target Support Files/Pods-BbungLocator/Pods-BbungLocator.debug.xcconfig"; sourceTree = "<group>"; };
 		E3357FF4ABA49F9B34D1C18D /* Pods-BbungLocator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BbungLocator.release.xcconfig"; path = "Target Support Files/Pods-BbungLocator/Pods-BbungLocator.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -74,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7793327D23A331E000469823 /* MapKit.framework in Frameworks */,
 				B8A6CBA81AC446459BE9EE89 /* libPods-BbungLocator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +120,8 @@
 		13B07FAE1A68108700A75B9A /* BbungLocator */ = {
 			isa = PBXGroup;
 			children = (
+				776D892D23A336AF002CF131 /* BbungLocatorDebug.entitlements */,
+				7793327B23A331D100469823 /* BbungLocator.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -129,6 +136,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7793327C23A331E000469823 /* MapKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				671CD478B9E242095D36EC0C /* libPods-BbungLocator.a */,
@@ -280,6 +288,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2452SCH5XQ;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -582,6 +591,8 @@
 			baseConfigurationReference = 45F1D2B704C00F3698EFC85C /* Pods-BbungLocatorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = 2452SCH5XQ;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -605,7 +616,9 @@
 			baseConfigurationReference = 50F8B1D2C1F67B6277F2C515 /* Pods-BbungLocatorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 2452SCH5XQ;
 				INFOPLIST_FILE = BbungLocatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -625,6 +638,7 @@
 			baseConfigurationReference = D928C920EB361D875BED510F /* Pods-BbungLocator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BbungLocator/BbungLocatorDebug.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 2452SCH5XQ;
@@ -646,6 +660,7 @@
 			baseConfigurationReference = E3357FF4ABA49F9B34D1C18D /* Pods-BbungLocator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BbungLocator/BbungLocator.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2452SCH5XQ;
 				INFOPLIST_FILE = BbungLocator/Info.plist;
