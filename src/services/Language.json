@@ -1,0 +1,125 @@
+{
+    "korean": {
+        "customHeader": {
+            "title": "뿡어빵지도"
+        },
+        "app": {
+            "mapStackLabel": "지도",
+            "listStackLabel": "리스트",
+            "guideStackLabel": "가이드",
+            "profileStackLabel": "프로필",
+            "settingsStackLabel": "설정"
+        },
+        "login": {
+            "title": "로그인",
+            "emailInput": "이메일 주소",
+            "passwordInput": "패스워드",
+            "loginButtonText": "로그인",
+            "signUpText": "새로운 사용자이신가요?",
+            "signUpLinkText": "회원가입"
+        },
+        "signUp": {
+            "greeting": "",
+            "fullName": "이름",
+            "emailAddress": "이메일 주소",
+            "password": "패스워드",
+            "signUpButton": "회원가입",
+            "loginText": "이미 회원이신가요?",
+            "loginLinkText": "로그인"
+        },
+        "addStore": {
+            "alertMessageOne": "새로운 가게를 등록하시겠습니까?",
+            "alertMessageTwo": "등록 / 취소",
+            "alertCancelText": "취소",
+            "title": "새로운 가게 등록",
+            "storeNameLabel": "가게 이름",
+            "storeNamePlaceholder": "예: 잉어킹",
+            "storePriceLabel": "가격",
+            "storePricePlaceholder": "예: 3개 1000원",
+            "storeAddressLabel": "주소",
+            "storeAddressPlaceholder": "주소 검색",
+            "storeAddButtonText": "등록하기"
+        },
+        "storeCard": {
+            "title": "가게 리스트",
+            "name": "이름: ",
+            "price": "가격: ",
+            "address": "주소: ",
+            "detailsButton": "상세"
+        },
+        store: {
+            "name": "이름: ",
+            "price": "가격: ",
+            "address": "주소: ",
+            "navigateButtonText": "안내하기"
+        },
+        "settings": {
+            "title": "설정",
+            "logout": "로그아웃",
+            "deactivate": "탈퇴",
+            "language": "언어"
+        }
+
+    },
+    "english": {
+        "customHeader": {
+            "title": "Bbung-a-pang Map"
+        },
+        "app": {
+            "mapStackLabel": "Map",
+            "listStackLabel": "List",
+            "guideStackLabel": "Guide",
+            "profileStackLabel": "Profile",
+            "settingsStackLabel": "Settings"
+        },
+        "login": {
+            "title": "Login Page",
+            "emailInput": "Email Address",
+            "passwordInput": "Password",
+            "loginButtonText": "Login",
+            "signUpText": "New to BbungTycoon?",
+            "signUpLinkText": "Sign Up"
+        },
+        "signUp": {
+            "greeting": "Hello!\nSign up to get started.",
+            "fullName": "Full Name",
+            "emailAddress": "Email Address",
+            "password": "Password",
+            "signUpButton": "Sign Up",
+            "loginText": "Have an account?",
+            "loginLinkText": "Login"
+        },
+        "addStore": {
+            "alertMessageOne": "Add a new store?",
+            "alertMessageTwo": "Add / Cancel",
+            "alertCancelText": "Cancel",
+            "title": "Add a New Store",
+            "storeNameLabel": "Store Name",
+            "storeNamePlaceholder": "Ex. Bbung-a-pang Café",
+            "storePriceLabel": "Price",
+            "storePricePlaceholder": "Ex. 3 for $1",
+            "storeAddressLabel": "Address",
+            "storeAddressPlaceholder": "Search Address",
+            "storeAddButtonText": "Create"
+        },
+        "storeCard": {
+            "title": "Stores List",
+            "name": "Store Name: ",
+            "price": "Price: ",
+            "address": "Address: ",
+            "detailsButton": "Details"
+        },
+        "store": {
+            "name": "Store Name: ",
+            "price": "Price: ",
+            "address": "Address: ",
+            "navigateButtonText": "Directions"
+        },
+        "settings": {
+            "title": "Settings",
+            "logout": "Logout",
+            "deactivate": "Deactivate",
+            "language": "Language"
+        }
+    }
+}

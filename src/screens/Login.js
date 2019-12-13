@@ -6,7 +6,8 @@ export default class Login extends React.Component {
     state = {
         email: '',
         password: '',
-        error: null
+        error: null,
+        language: 'korean'
     };
 
     handleLogin = () => {

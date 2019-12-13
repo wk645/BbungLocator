@@ -3,26 +3,18 @@ import { View, Text, Button, StyleSheet, TextInput, Alert, TouchableWithoutFeedb
 import useForm from 'react-hook-form';
 import { GoogleAutoComplete } from 'react-native-google-autocomplete';
 
+import Language from '../services/Language.json';
+import LocationItem from '../components/LocationItem';
+import CustomHeader from '../components/CustomHeader';
+
 import { db } from '../config';
 
-import LocationItem from '../components/LocationItem';
-
-function Item({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
-
 export function AddStore() {
+    const [korean, setLanguage] = useState(true);
     const { register, setValue, handleSubmit, errors } = useForm();
     const [address, setAddress] = useState(null);
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-
-    console.log('latitude', latitude);
-    console.log('longitude', longitude);
 
     _onPressCreate = (data) => {
         console.log('ddd', data);
@@ -34,6 +26,8 @@ export function AddStore() {
             latitude,
             longitude
         });
+
+        // this.props.navigation.navigate('Map');
     }
 
     const onSubmit = (data) => {
@@ -53,7 +47,6 @@ export function AddStore() {
     };
 
     const onAddressChange = (address) => {
-        console.log('aaa', address);
         console.log('fff', address.formatted_address);
         setAddress(address.formatted_address);
         setLatitude(address.geometry.location.lat);
@@ -65,6 +58,7 @@ export function AddStore() {
             Keyboard.dismiss();
         }}>
             <View style={styles.container}>
+                {/*<CustomHeader isHome={true} navigation={this.props.navigation} /> */}
                 <Text style={styles.addStoreText}>새로운 가게 등록</Text>
                 <View style={styles.inputContainer}>
                     <Text style={styles.titles}>가게 이름</Text>

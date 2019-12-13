@@ -18,7 +18,7 @@ import AddStore from './src/screens/AddStore';
 import Guide from './src/screens/Guide';
 import Profile from './src/screens/Profile';
 import Settings from './src/screens/Settings';
-
+import StoreCard from './src/screens/StoreCard';
 import LoadingScreen from './src/screens/LoadingScreen';
 import Login from './src/screens/Login';
 import SignUp from './src/screens/SignUp';
@@ -28,23 +28,23 @@ const navOptionHandler = (navigation) => ({
   header: null
 });
 
-const MapStack = createStackNavigator({
-  Map: {
-    screen: GoogleMap,
-    navigationOptions: navOptionHandler
-  }
-});
+// const MapStack = createStackNavigator({
+//   Map: {
+//     screen: GoogleMap,
+//     navigationOptions: navOptionHandler
+//   }
+// });
 
-const ListStack = createStackNavigator({
-  StoresList: {
-    screen: StoresList,
-    navigationOptions: navOptionHandler
-  }
-});
+// const ListStack = createStackNavigator({
+//   StoresList: {
+//     screen: StoresList,
+//     navigationOptions: navOptionHandler
+//   }
+// });
 
 const MainTabs = createBottomTabNavigator({
   Map: {
-    screen: MapStack,
+    screen: GoogleMap,
     navigationOptions: {
         tabBarLabel: '지도',
         tabBarIcon: ({ tintColor }) => (
@@ -53,7 +53,7 @@ const MainTabs = createBottomTabNavigator({
     }
   },
   List: {
-    screen: ListStack,
+    screen: StoresList,
     navigationOptions: {
       tabBarLabel: '리스트',
       tabBarIcon: ({ tintColor }) => (
@@ -108,6 +108,14 @@ const MainStack = createStackNavigator({
   },
   AddStore: {
     screen: AddStore,
+    navigationOptions: navOptionHandler
+  },
+  StoreCard: {
+    screen: StoreCard,
+    navigationOptions: navOptionHandler
+  },
+  Store: {
+    screen: Store,
     navigationOptions: navOptionHandler
   }
 },

@@ -1,12 +1,27 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
+import { db } from '../config';
+let storesRef = db.ref('/stores');
+
 class StoreCard extends React.Component {
+    state = {
+        stores: []
+    };
+
+    componentDidMount() {
+        storesRef.on('value', snapshot => {
+            let data = snapshot.val();
+            let stores = Object.values(data);
+            this.setState({ stores });
+        });
+    }
+
     render() {
         return (
             <View style={styles.storesList}>
                 <Text style={styles.header}>가게 리스트</Text>
-                {this.props.stores.map((store, index) => {
+                {this.state.stores.map((store, index) => {
                     return (
                         <View key={index} style={styles.storeCard}>
                             <Text style={styles.storeText}>이름: {store.name}</Text>
