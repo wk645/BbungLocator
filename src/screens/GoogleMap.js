@@ -80,7 +80,9 @@ class GoogleMap extends React.Component {
                 <Button
                     style={styles.button}
                     title='+'
-                    onPress={() => this.props.navigation.navigate('AddStore')}
+                    onPress={() => this.props.navigation.navigate('AddStore', {
+                      navigation: this.props.navigation
+                    })}
                 />
             </View>
             </View>

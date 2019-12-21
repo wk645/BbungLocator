@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Text, Header, Left, Body, Right, Icon, Title } from 'native-base';
+import {Button, Header, Left, Body, Right, Icon, Title} from 'native-base';
 
 export default class CustomHeader extends React.Component {
   render() {
     console.log('props in custom header', this.props.navigation);
-    const { isHome } = this.props;
+    const {isHome} = this.props;
     console.log('is home?', isHome);
     return (
       <Header>
@@ -18,11 +18,9 @@ export default class CustomHeader extends React.Component {
           }
         </Left>
         <Body>
-          <Title>뿡어빵지도</Title>
+          <Title>붕어빵 삼만리</Title>
         </Body>
-        <Right>
-          {null}
-        </Right>
+        <Right>{null}</Right>
       </Header>
     );
   }

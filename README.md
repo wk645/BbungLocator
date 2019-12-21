@@ -8,7 +8,7 @@
 
 ## Introduction
 
-BbungTycoon is a 붕어빵 'Bbung-a-pang' (Fish-shaped red bean filled Korean dessert) finder located at Korea. Users can search and/or add new stores to the map.
+BbungTycoon is a 붕어빵 삼만리 'Bbung-a-pang' (Fish-shaped red bean filled Korean dessert) finder located at Korea. Users can search and/or add new stores to the map.
 
 ## Technologies
 
